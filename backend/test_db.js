@@ -8,7 +8,7 @@ var password = process.env.DB_PASSWORD;
 var dbname = process.env.DB_NAME;
 
 // Initialize DB connection
-console.log('Initializing DB connection...')
+console.log('Initializing DB connection...');
 var connection = mysql.createConnection({
     host: host,
     user: user,
