@@ -1,2 +1,3 @@
 *.swp
-backend/data/
+backend/seed/data
+node_modules/
