@@ -1,19 +1,20 @@
-require('dotenv').config();
 var mysql = require('mysql');
+var dotenv = require('dotenv');
 
 // Get params from env file
-var host = process.env.DEBUG_HOST;
-var user = process.env.DB_USR;
-var password = process.env.DB_PASSWORD;
-var dbname = process.env.DB_NAME;
+dotenv.config({path: 'backend/.env'});
+var dbHost = process.env.DEBUG_HOST;
+var dbUser = process.env.DB_USR;
+var dbPassword = process.env.DB_PASSWORD;
+var dbName = process.env.DB_NAME;
 
 // Initialize DB connection
 console.log('Initializing DB connection...');
 var connection = mysql.createConnection({
-    host: host,
-    user: user,
-    password = password,
-    database = dbname
+    host: dbHost,
+    user: dbUser,
+    password: dbPassword,
+    database: dbName
 });
 console.log('DB connection established.');
 
@@ -21,9 +22,9 @@ console.log('DB connection established.');
 console.log('testing DB connection...');
 connection.connect(function(err) {
     if (err) {
-        console.log('Failed to finish DB connection health check.');
-        process.exit(1);
-    } 
+        return console.error('ERROR: ' + err.message);
+    }
+    return console.log('DB connection all good.')
 });
-console.log('DB connection all good.');
 
+process.exit(0);

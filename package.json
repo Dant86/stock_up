@@ -4,6 +4,7 @@
   "description": "quizbowl resource",
   "main": "index.js",
   "scripts": {
+    "db_healthcheck": "node backend/test_db.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
